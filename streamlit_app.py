@@ -38,7 +38,7 @@ df2_salida = df_2_salida.to_pandas()
 df3_llegada_marylebone = df_3_llegada_marylebone.to_pandas()
 df3_salida_marylebone = df_3_salida_marylebone.to_pandas()
 
-df1.head()
+st.dataframe(data=df1, use_container_width=True)
 
 
   #fig, ax = plt.subplots(figsize=(10, 5))
