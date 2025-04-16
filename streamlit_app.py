@@ -52,29 +52,29 @@ st.write("df1:", df1.dtypes.to_dict())
 st.dataframe(df1.head(), use_container_width=True)
 
 # ——— 3. Preparamos el índice para que st.bar_chart lo use como eje X ———
-df1.set_index("estacion", inplace=True)
+df1.set_index("station_name", inplace=True)
 df2_arr.set_index("sector", inplace=True)
 df2_dep.set_index("sector", inplace=True)
 
 # ——— 4. Reporte 1: viajes por estación ———
 st.subheader("Reporte 1 – Cantidad de viajes por estación")
 # IMPORTANTE: usamos la serie con nombre, no df.iloc[:,0] que a veces trae name=None
-st.bar_chart(df1["viajes"])
+st.bar_chart(df1["unique_journey_id"])
 
 # ——— 5. Reporte 2: llegadas y salidas por sector ———
 st.subheader("Reporte 2 – Llegadas por sector")
-st.bar_chart(df2_arr["llegadas"])
+st.bar_chart(df2_arr["total_llegadas"])
 
 st.subheader("Reporte 2 – Salidas por sector")
-st.bar_chart(df2_dep["salidas"])
+st.bar_chart(df2_dep["total_salidas"])
 
 # ——— 6. Reporte 3: comparativo en Marylebone ———
 st.subheader("Reporte 3 – Llegadas vs Salidas en Marylebone")
 # Creamos un DataFrame con índice y una sola columna 'cantidad'
 df_mary = pd.DataFrame({
     "cantidad": [
-        df3_arr["llegadas"].sum(),
-        df3_dep["salidas"].sum()
+        df3_arr["total_llegadas"].sum(),
+        df3_dep["total_salidas"].sum()
     ]
 }, index=["Llegadas", "Salidas"])
 st.bar_chart(df_mary)
