@@ -30,6 +30,15 @@ df_3_llegada_marylebone = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_LLEGADA").f
 df_3_salida_marylebone = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_SALIDA").filter(col("sector") == ' Marylebone')
 #st.dataframe(data=df_3_salida_marylebone, use_container_width=True)
 
+# ——— 1. Conectamos y cargamos Snowpark DataFrames ———
+df1_snow   = session.table("CYCLE_WORLD.PUBLIC.REPORT_1")
+df2_arr_snow = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_LLEGADA")
+df2_dep_snow = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_SALIDA")
+
+# Filtro para Marylebone (sin espacios al principio)
+df3_arr_snow = df2_arr_snow.filter(col("sector") == "Marylebone")
+df3_dep_snow = df2_dep_snow.filter(col("sector") == "Marylebone")
+
 # ——— 2. Convertimos a pandas ———
 df1     = df1_snow.to_pandas()
 df2_arr = df2_arr_snow.to_pandas()
