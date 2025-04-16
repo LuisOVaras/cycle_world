@@ -30,3 +30,8 @@ df_3_llegada_marylebone = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_LLEGADA").f
 
 df_3_salida_marylebone = session.table("CYCLE_WORLD.PUBLIC.REPORT_2_SALIDA").filter(col("sector") == ' Marylebone')
 #st.dataframe(data=df_3_salida_marylebone, use_container_width=True)
+fig, ax = plt.subplots(figsize=(10, 5))
+plt.barplot(data=df1, x="estacion", y="viajes", ax=ax)
+ax.set_title("Cantidad de viajes por estación")
+ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+st.pyplot(fig)
