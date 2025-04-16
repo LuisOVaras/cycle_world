@@ -4,3 +4,4 @@ streamlit
 requests
 matplotlib
 seaborn
+pandas
