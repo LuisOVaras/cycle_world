@@ -37,12 +37,14 @@ df2_salida = df_2_salida.to_pandas()
 df3_llegada_marylebone = df_3_llegada_marylebone.to_pandas()
 df3_salida_marylebone = df_3_salida_marylebone.to_pandas()
 
-st.dataframe(data=df1, use_container_width=True)
+# Reporte 1: Viajes por estación
+st.subheader("Reporte 1 – Cantidad de viajes por estación")
+
 
 fig, ax = plt.subplots(figsize=(12, 6))
 ax.bar(df1["STATION_NAME"], df1["UNIQUE_JOURNEY_ID"], color='steelblue')
 ax.set_title("Cantidad de viajes por estación", fontsize=16)
-ax.set_xlabel("Estación")
-ax.set_ylabel("Viajes")
+ax.set_xlabel("STATION_NAME")
+ax.set_ylabel("UNIQUE_JOURNEY_ID")
 ax.tick_params(axis='x', rotation=45)
 st.pyplot(fig)
