@@ -42,7 +42,7 @@ df3_salida_marylebone = df_3_salida_marylebone.to_pandas()
 
 
 fig, ax = plt.subplots(figsize=(10, 5))
-sns.barplot(data=df1, x="estacion", y="viajes", ax=ax)
+sns.barplot(data=df1, x="station_name", y="unique_journey_id", ax=ax)
 ax.set_title("Cantidad de viajes por estación")
 ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
 st.pyplot(fig)
