@@ -2,7 +2,6 @@
 import streamlit as st
 from snowflake.snowpark.context import get_active_session
 from snowflake.snowpark.functions import col
-import seaborn as sns
 import matplotlib.pyplot as plt
 # Write directly to the app
 st.title(f"Analisis 📊 Cycle World")
@@ -40,9 +39,10 @@ df3_salida_marylebone = df_3_salida_marylebone.to_pandas()
 
 st.dataframe(data=df1, use_container_width=True)
 
-
-fig, ax = plt.subplots(figsize=(10, 5))
-sns.barplot(data=df1, x="STATION_NAME", y="UNIQUE_JOURNEY_ID", ax=ax)
-ax.set_title("Cantidad de viajes por estación")
-ax.set_xticklabels(ax.get_xticklabels(), rotation=45, ha="right")
+fig, ax = plt.subplots(figsize=(12, 6))
+ax.bar(df1["STATION_NAME"], df1["UNIQUE_JOURNEY_ID"], color='steelblue')
+ax.set_title("Cantidad de viajes por estación", fontsize=16)
+ax.set_xlabel("Estación")
+ax.set_ylabel("Viajes")
+ax.tick_params(axis='x', rotation=45)
 st.pyplot(fig)
